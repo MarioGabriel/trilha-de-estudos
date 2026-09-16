@@ -136,6 +136,18 @@ hr{border:0;border-top:1px solid var(--line);margin:38px 0}
   border-radius:10px;padding:14px 18px;margin:16px 0;overflow-x:auto;border-left:4px solid var(--gold)}
 .formula .lbl{display:block;font-family:var(--sans);font-size:12px;color:var(--gold-soft);
   text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+/* LEGIBILIDADE sobre fundo escuro (set/2026): a caixa .formula tem fundo navy,
+   mas strong/em/a/.term herdavam as cores do corpo — strong{var(--navy)} dava
+   1,0:1 (navy sobre navy, invisivel), em{var(--g)} 1,9:1 e a{var(--navy3)} 1,6:1.
+   Mesmo tratamento ja aplicado a .filosofia. Gate: _curso/auditar_contraste.py */
+.formula strong,.formula b{color:#fff}
+.formula em{color:#f0c8cc;font-style:italic}
+.formula a{color:var(--gold-soft);border-bottom-color:rgba(243,232,200,.45)}
+.formula a:hover{color:#fff;border-bottom-color:var(--gold)}
+.formula .term,.formula code{color:#f3e8c8}
+.formula .en{color:#b9c9d8}
+/* th tem fundo navy e color:#fff — strong/em/a dentro dele sofrem o mesmo */
+th strong,th b{color:#fff} th em{color:#f0c8cc} th a{color:var(--gold-soft)}
 
 /* ---------- worked example ---------- */
 .exemplo{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
