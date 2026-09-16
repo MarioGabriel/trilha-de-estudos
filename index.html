@@ -46,6 +46,15 @@ body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);
 .hero::before{content:"";position:absolute;left:-60px;bottom:-120px;width:300px;height:300px;
   background:radial-gradient(circle,rgba(33,82,127,.5),transparent 70%);pointer-events:none}
 .hero .inner{max-width:880px;margin:0 auto;position:relative}
+/* LEGIBILIDADE (set/2026): o hero e navy, mas strong/em/a herdam as cores do
+   corpo — medido no render de 591 heroes: em burgundy 1,43:1 e strong navy
+   1,24:1, ou seja, o realce SOME justo no subtitulo da aula. Mesmo tratamento
+   de .filosofia e .formula. Gate: _curso/auditar_contraste.py */
+.hero strong,.hero b{color:#fff}
+.hero em{color:#f0c8cc;font-style:italic}
+.hero a:not(.pasta){color:var(--gold-soft);border-bottom-color:rgba(243,232,200,.45)}
+.hero a:not(.pasta):hover{color:#fff;border-bottom-color:var(--gold)}
+.hero .term,.hero code{color:#f3e8c8}
 .hero .wide{max-width:1100px}
 .kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin:0 0 12px}
 .hero h1{font-family:var(--serif);font-size:40px;line-height:1.12;margin:0 0 14px;font-weight:700}
@@ -148,6 +157,10 @@ hr{border:0;border-top:1px solid var(--line);margin:38px 0}
 .formula .en{color:#b9c9d8}
 /* th tem fundo navy e color:#fff — strong/em/a dentro dele sofrem o mesmo */
 th strong,th b{color:#fff} th em{color:#f0c8cc} th a{color:var(--gold-soft)}
+th .term,th code{color:#f3e8c8}
+/* latentes hoje (0 ocorrencias medidas), blindados para nao nascerem defeituosos */
+pre strong,pre b{color:#fff} pre em{color:#f0c8cc} pre a{color:var(--gold-soft)} pre .term{color:#f3e8c8}
+.modcard .n strong,.modcard .n b{color:#fff} .modcard .n em{color:#f0c8cc} .modcard .n a{color:var(--gold-soft)}
 
 /* ---------- worked example ---------- */
 .exemplo{background:var(--card);border:1px solid var(--line);border-radius:var(--r);
@@ -126760,12 +126773,12 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
     <!-- CAMADA OPERACIONAL -->
     <rect x="60" y="212" width="640" height="72" rx="10" fill="#21527f" opacity=".85"/>
-    <text x="380" y="233" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="13" fill="#c79a3a" font-weight="700" letter-spacing=".08em">CAMADA OPERACIONAL</text>
+    <text x="380" y="233" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="13" fill="#f0e4ca" font-weight="700" letter-spacing=".08em">CAMADA OPERACIONAL</text>
     <text x="170" y="258" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="11.5" fill="#e8eef4">Bancos múltiplos</text>
     <text x="295" y="258" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="11.5" fill="#e8eef4">Corretoras / DTVM</text>
     <text x="430" y="258" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="11.5" fill="#e8eef4">Gestoras de fundos</text>
     <text x="580" y="258" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="11.5" fill="#e8eef4">Seguradoras / EFPC</text>
-    <text x="380" y="275" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="10.5" fill="#a0b4c8">BB · CEF · BNDES (operadores especiais)</text>
+    <text x="380" y="275" text-anchor="middle" font-family="-apple-system,Arial,sans-serif" font-size="10.5" fill="#dfe5ec">BB · CEF · BNDES (operadores especiais)</text>
 
     <!-- SPB / Clearinghouse -->
     <rect x="60" y="298" width="640" height="28" rx="8" fill="#0d6e6e" opacity=".85"/>
@@ -126773,7 +126786,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
     <!-- seta feedback regulatório (loop) -->
     <path d="M 720 155 Q 748 155 748 220 Q 748 290 720 290" fill="none" stroke="#c79a3a" stroke-width="1.5" stroke-dasharray="5,3"/>
-    <text x="752" y="225" font-family="-apple-system,Arial,sans-serif" font-size="10" fill="#c79a3a" transform="rotate(90,752,225)">feedback regulatório</text>
+    <text x="752" y="225" font-family="-apple-system,Arial,sans-serif" font-size="10" fill="#8b6b28" transform="rotate(90,752,225)">feedback regulatório</text>
 
     <!-- marcador de seta -->
     <defs>
@@ -127340,7 +127353,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
     <!-- Inflação → Copom/Selic (loop de controle, seta subindo) -->
     <path d="M340 130 L340 70" stroke="#c79a3a" stroke-width="2" fill="none" marker-end="url(#arr)"/>
-    <text x="355" y="100" fill="#c79a3a" font-size="11">loop B</text>
+    <text x="355" y="100" fill="#8b6b28" font-size="11">loop B</text>
 
     <!-- Expectativas → Inflação (loop de reforço) -->
     <path d="M340 262 L340 180" stroke="#0d6e6e" stroke-width="2" fill="none" marker-end="url(#arr-t)"/>
@@ -128974,7 +128987,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <text x="590" y="82" text-anchor="middle" font-size="12" font-weight="bold" fill="#c79a3a">Credores</text>
       <text x="590" y="98" text-anchor="middle" font-size="10" fill="#aec6d8">Lenders · Dívida Sênior</text>
       <line x1="520" y1="90" x2="430" y2="215" stroke="#c79a3a" stroke-width="1.8" stroke-dasharray="5,3"/>
-      <text x="488" y="148" text-anchor="middle" font-size="9" fill="#c79a3a">dívida sênior</text>
+      <text x="488" y="148" text-anchor="middle" font-size="9" fill="#8f6e29">dívida sênior</text>
 
       <!-- EPC CONTRACTOR (left) -->
       <rect x="30" y="205" width="130" height="52" rx="6" fill="#8c2f39"/>
@@ -129009,7 +129022,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <text x="350" y="402" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f2b46">Governo / Concedente</text>
       <text x="350" y="418" text-anchor="middle" font-size="10" fill="#0f2b46">Concessão / ECA / DFI</text>
       <line x1="350" y1="380" x2="350" y2="265" stroke="#c79a3a" stroke-width="1.8"/>
-      <text x="365" y="330" text-anchor="start" font-size="9" fill="#c79a3a">concessão</text>
+      <text x="365" y="330" text-anchor="start" font-size="9" fill="#8f6e29">concessão</text>
 
       <!-- Cash flow arrow label -->
       <text x="350" y="20" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f2b46">Estrutura Típica de Project Finance</text>
@@ -129113,7 +129126,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <text x="463" y="108" font-size="9" fill="#fff">Risco Regulatório</text>
 
       <rect x="458" y="115" width="80" height="12" rx="3" fill="#5c6b7a" opacity="0.65"/>
-      <text x="463" y="124" font-size="9" fill="#fff">Risco Residual</text>
+      <text x="463" y="124" font-size="9" fill="#0f2b46">Risco Residual</text>
 
       <!-- Arrows and labels at bottom -->
       <text x="128" y="242" text-anchor="middle" font-size="9" fill="#8c2f39">limited-recourse ativo</text>
@@ -129420,7 +129433,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
       <!-- Ring-fence (oval tracejado) -->
       <ellipse cx="350" cy="205" rx="120" ry="65" fill="none" stroke="#c79a3a" stroke-width="2" stroke-dasharray="8,4"/>
-      <text x="350" y="387" text-anchor="middle" fill="#c79a3a" font-size="11" font-style="italic">ring-fence (isolamento legal)</text>
+      <text x="350" y="387" text-anchor="middle" fill="#8d6d28" font-size="11" font-style="italic">ring-fence (isolamento legal)</text>
       <line x1="350" y1="376" x2="350" y2="270" stroke="#c79a3a" stroke-width="1" stroke-dasharray="4,3"/>
 
       <!-- Título -->
@@ -129562,7 +129575,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <text x="165" y="218" text-anchor="middle" fill="#5c6b7a" font-size="10" font-style="italic">Custo de transação: baixo</text>
 
       <!-- Seta central -->
-      <text x="340" y="148" text-anchor="middle" fill="#c79a3a" font-size="22" font-weight="bold">vs</text>
+      <text x="340" y="148" text-anchor="middle" fill="#8d6d28" font-size="22" font-weight="bold">vs</text>
 
       <!-- Lado direito: Project Finance (off-balance-sheet) -->
       <rect x="370" y="40" width="290" height="200" rx="10" fill="none" stroke="#0f2b46" stroke-width="2"/>
@@ -130181,10 +130194,10 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
       <!-- Offtaker / Power Purchaser -->
       <rect x="580" y="40" width="140" height="52" rx="7" fill="#c79a3a"/>
-      <text x="650" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Offtaker / Power</text>
-      <text x="650" y="78" text-anchor="middle" font-size="10" fill="#fff">Purchaser (PPA)</text>
+      <text x="650" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f2b46">Offtaker / Power</text>
+      <text x="650" y="78" text-anchor="middle" font-size="10" fill="#0f2b46">Purchaser (PPA)</text>
       <line x1="580" y1="78" x2="442" y2="185" stroke="#c79a3a" stroke-width="2" marker-end="url(#arr-gold)"/>
-      <text x="510" y="118" font-size="9" fill="#c79a3a" transform="rotate(28,510,118)">← Risco de demanda</text>
+      <text x="510" y="118" font-size="9" fill="#8b6b28" transform="rotate(28,510,118)">← Risco de demanda</text>
 
       <!-- O&M Operator -->
       <rect x="580" y="335" width="140" height="52" rx="7" fill="#3a4a7a"/>
@@ -130201,7 +130214,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <!-- Lenders -->
       <rect x="285" y="340" width="170" height="52" rx="7" fill="#0f2b46" opacity="0.7"/>
       <text x="370" y="362" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff">Credores (Lenders)</text>
-      <text x="370" y="378" text-anchor="middle" font-size="10" fill="#a0b4c8">Direct Agreements</text>
+      <text x="370" y="378" text-anchor="middle" font-size="10" fill="#dbe3ea">Direct Agreements</text>
       <line x1="370" y1="340" x2="370" y2="252" stroke="#5c6b7a" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
 
       <!-- Governo / Host Gov -->
@@ -130572,7 +130585,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <circle cx="150" cy="358" r="7" fill="#8c2f39"/>
       <text x="163" y="363" font-size="9" fill="#8c2f39">Fornecedor</text>
       <circle cx="230" cy="358" r="7" fill="#c79a3a"/>
-      <text x="243" y="363" font-size="9" fill="#c79a3a">Offtaker/Gov</text>
+      <text x="243" y="363" font-size="9" fill="#8b6b28">Offtaker/Gov</text>
       <circle cx="320" cy="358" r="7" fill="#5c6b7a" opacity="0.7"/>
       <text x="333" y="363" font-size="9" fill="#5c6b7a">Risco residual da SPV</text>
     </svg>
@@ -130748,8 +130761,8 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <polyline points="30,195 110,190 200,175 295,145 400,140 480,165 580,170 790,155"
         fill="none" stroke="#c79a3a" stroke-width="2.5" stroke-dasharray="5,3"/>
       <text x="30" y="210" font-size="10" fill="#5c6b7a" font-family="Arial,sans-serif">baixa →</text>
-      <text x="345" y="138" font-size="10" fill="#c79a3a" font-family="Arial,sans-serif">pico no FC</text>
-      <text x="680" y="150" font-size="10" fill="#c79a3a" font-family="Arial,sans-serif">↘ amortização</text>
+      <text x="345" y="138" font-size="10" fill="#8b6b28" font-family="Arial,sans-serif">pico no FC</text>
+      <text x="680" y="150" font-size="10" fill="#8b6b28" font-family="Arial,sans-serif">↘ amortização</text>
 
       <!-- Marcador da seta -->
       <defs>
@@ -132212,7 +132225,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
       <text x="12" y="160" font-size="11" fill="#5c6b7a" transform="rotate(-90,20,160)">DSCR</text>
       <!-- Linha de mínimo setorial 1,30× -->
       <line x1="60" y1="178" x2="650" y2="178" stroke="#c79a3a" stroke-width="1.5" stroke-dasharray="7,4"/>
-      <text x="655" y="175" font-size="10" fill="#c79a3a" text-anchor="start">1,30×</text>
+      <text x="655" y="175" font-size="10" fill="#8f6e29" text-anchor="start">1,30×</text>
       <!-- Linha de default técnico 1,00× -->
       <line x1="60" y1="228" x2="650" y2="228" stroke="#8c2f39" stroke-width="1.2" stroke-dasharray="4,3"/>
       <text x="655" y="225" font-size="10" fill="#8c2f39" text-anchor="start">1,00×</text>
@@ -132512,8 +132525,8 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
   <rect x="40" y="118" width="200" height="70" rx="8" fill="url(#gm)"/>
   <text x="140" y="148" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="15" font-weight="700" fill="#fff">Mezzanine / Sub</text>
-  <text x="140" y="166" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" fill="#fff8e8">Mezzanine · 0–15%</text>
-  <text x="140" y="181" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#fff8e8">Custo: taxa fixa elevada</text>
+  <text x="140" y="166" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="12" fill="#3c2900">Mezzanine · 0–15%</text>
+  <text x="140" y="181" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="11" fill="#3c2900">Custo: taxa fixa elevada</text>
 
   <rect x="40" y="196" width="200" height="70" rx="8" fill="url(#ge)"/>
   <text x="140" y="228" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="15" font-weight="700" fill="#fff">Equity</text>
@@ -132853,8 +132866,8 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
   <!-- 6 -->
   <circle cx="660" cy="60" r="12" fill="#0f2b46"/>
-  <text x="660" y="47" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#fff" font-weight="700">Financial</text>
-  <text x="660" y="37" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#fff">Close</text>
+  <text x="660" y="47" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#0f2b46" font-weight="700">Financial</text>
+  <text x="660" y="37" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#0f2b46">Close</text>
   <text x="660" y="82" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="9" fill="#5c6b7a">Mês 10–14</text>
 
   <text x="360" y="108" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="10" fill="#5c6b7a" font-style="italic">Processo típico de grande operação: 1 ano ou mais. Financiamento frequentemente está no caminho crítico do projeto.</text>
@@ -133302,8 +133315,8 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
       <!-- 6 - Distribuição -->
       <rect x="130" y="344" width="220" height="38" rx="7" fill="#c79a3a"/>
-      <text x="240" y="361" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">⑤ Distribuição aos sponsors</text>
-      <text x="240" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#fff">(Distributions Account — não garantida)</text>
+      <text x="240" y="361" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#0f2b46">⑤ Distribuição aos sponsors</text>
+      <text x="240" y="375" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#0f2b46">(Distributions Account — não garantida)</text>
 
       <!-- seta 6→7 -->
       <line x1="240" y1="382" x2="240" y2="398" stroke="#5c6b7a" stroke-width="1.5"/>
@@ -134539,9 +134552,9 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
       <!-- FASE 2: Financial Close -->
       <rect x="162" y="60" width="108" height="60" rx="6" fill="#c79a3a"/>
-      <text x="216" y="83" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Financial Close</text>
-      <text x="216" y="97" text-anchor="middle" font-size="10" fill="#fff8e7">Assinatura · SPV</text>
-      <text x="216" y="111" text-anchor="middle" font-size="10" fill="#fff8e7">Drawdown inicial</text>
+      <text x="216" y="83" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f2b46">Financial Close</text>
+      <text x="216" y="97" text-anchor="middle" font-size="10" fill="#4b3500">Assinatura · SPV</text>
+      <text x="216" y="111" text-anchor="middle" font-size="10" fill="#4b3500">Drawdown inicial</text>
       <circle cx="162" cy="90" r="5" fill="#c79a3a"/>
 
       <!-- seta -->
@@ -134717,7 +134730,7 @@ Paridade da Taxa de Juros (Interest Rate Parity):
 
       <!-- Total -->
       <rect x="60" y="188" width="200" height="28" rx="4" fill="#c79a3a"/>
-      <text x="160" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Total Capital: 10,5%</text>
+      <text x="160" y="206" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f2b46">Total Capital: 10,5%</text>
 
       <text x="160" y="235" text-anchor="middle" font-size="9" fill="#5c6b7a">sobre Ativos Ponderados pelo Risco (RWA)</text>
 
